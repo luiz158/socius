@@ -1,13 +1,16 @@
 package br.com.socius.entity;
 
-import static javax.persistence.GenerationType.SEQUENCE;
+import static javax.persistence.EnumType.STRING;
 
 import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Peregrino implements Serializable {
@@ -15,16 +18,21 @@ public class Peregrino implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "teste")
+	@SequenceGenerator(allocationSize = 1, name = "teste", sequenceName = "seq_lalala")
 	private Long id;
 
-	private Long numeroSocio;
+	private Long numerosocio;
 
-	private String nomeCompleto;
+	private String nome;
 
+	@Enumerated(STRING)
+	private Sangue sangue;
+
+	@Enumerated(STRING)
 	private Sexo sexo;
 
-	private Date dataNascimento;
+	private Date datanascimento;
 
 	private String rg;
 
@@ -32,7 +40,13 @@ public class Peregrino implements Serializable {
 
 	private String email;
 
+	private String telefoneresidencial;
+
+	private String telefonecelular;
+
 	private String endereco;
+
+	private String bairro;
 
 	private String municipio;
 
@@ -42,12 +56,6 @@ public class Peregrino implements Serializable {
 
 	private String cep;
 
-	private String telefoneResidencial;
-
-	private String telefoneComercial;
-
-	private String telefoneCelular;
-
 	public Long getId() {
 		return id;
 	}
@@ -56,20 +64,28 @@ public class Peregrino implements Serializable {
 		this.id = id;
 	}
 
-	public Long getNumeroSocio() {
-		return numeroSocio;
+	public Long getNumerosocio() {
+		return numerosocio;
 	}
 
-	public void setNumeroSocio(Long numeroSocio) {
-		this.numeroSocio = numeroSocio;
+	public void setNumerosocio(Long numerosocio) {
+		this.numerosocio = numerosocio;
 	}
 
-	public String getNomeCompleto() {
-		return nomeCompleto;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Sangue getSangue() {
+		return sangue;
+	}
+
+	public void setSangue(Sangue sangue) {
+		this.sangue = sangue;
 	}
 
 	public Sexo getSexo() {
@@ -80,12 +96,12 @@ public class Peregrino implements Serializable {
 		this.sexo = sexo;
 	}
 
-	public Date getDataNascimento() {
-		return dataNascimento;
+	public Date getDatanascimento() {
+		return datanascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
 	}
 
 	public String getRg() {
@@ -112,12 +128,36 @@ public class Peregrino implements Serializable {
 		this.email = email;
 	}
 
+	public String getTelefoneresidencial() {
+		return telefoneresidencial;
+	}
+
+	public void setTelefoneResidencial(String telefoneresidencial) {
+		this.telefoneresidencial = telefoneresidencial;
+	}
+
+	public String getTelefonecelular() {
+		return telefonecelular;
+	}
+
+	public void setTelefonecelular(String telefonecelular) {
+		this.telefonecelular = telefonecelular;
+	}
+
 	public String getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 	public String getMunicipio() {
@@ -150,30 +190,6 @@ public class Peregrino implements Serializable {
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public String getTelefoneResidencial() {
-		return telefoneResidencial;
-	}
-
-	public void setTelefoneResidencial(String telefoneResidencial) {
-		this.telefoneResidencial = telefoneResidencial;
-	}
-
-	public String getTelefoneComercial() {
-		return telefoneComercial;
-	}
-
-	public void setTelefoneComercial(String telefoneComercial) {
-		this.telefoneComercial = telefoneComercial;
-	}
-
-	public String getTelefoneCelular() {
-		return telefoneCelular;
-	}
-
-	public void setTelefoneCelular(String telefoneCelular) {
-		this.telefoneCelular = telefoneCelular;
 	}
 
 }

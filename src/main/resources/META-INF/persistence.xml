@@ -6,7 +6,8 @@
 	<persistence-unit name="socius-ds" transaction-type="JTA">
 		<jta-data-source>java:jboss/datasources/PostgresqlDS</jta-data-source>
 		
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<class>br.com.socius.entity.Peregrino</class>		
+		
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />

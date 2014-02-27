@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Socius</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body>
+		<div class="container">
+		
+			<img src="img/logo.png" class="center-block">
+		
+			<h2>Cadastro de Peregrino</h2>
+			
+		
+			<form role="form" class="well">
+			<input type="hidden" id="id">
+			
+				<div class="row form-group">
+					<div class="col-md-2">
+						<label for="numerosocio">N&ordm; Sócio</label>
+		    		<input type="text" class="form-control" id="numerosocio" maxlength="3">
+		    		<div id="numerosocio-message" hidden="true" class="text-danger"></div>
+		    		
+					</div>
+					<div class="col-md-8">
+						<label for="nome">Nome</label>
+		    		<input type="text" class="form-control" id="nome">
+		    		<div id="nome-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-2">
+						<label for="sangue">Sangue</label>
+						<select id="sangue" class="form-control">
+  						<option value="">Selecione...</option>
+  						<option value="A_POSITIVO">A+</option>
+  						<option value="A_NEGATIVO">A-</option>
+  						<option value="B_POSITIVO">B+</option>
+  						<option value="B_NEGATIVO">B-</option>
+  						<option value="O_POSITIVO">O+</option>
+  						<option value="O_NEGATIVO">O-</option>
+  						<option value="AB_POSITIVO">AB+</option>
+  						<option value="AB_NEGATIVO">AB-</option>
+	 					</select>
+	 					<div id="sangue-message" hidden="true" class="text-danger"></div>
+					</div>					
+				</div>
+				<div class="row form-group">
+					<div class="col-md-3">
+						<label for="sexo">Sexo</label>
+						<select id="sexo" class="form-control">
+  						<option value="">Selecione...</option>
+  						<option value="FEMININO">FEMININO</option>
+  						<option value="MASCULINO">MASCULINO</option>
+	 					</select>
+	 					<div id="sexo-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="datanascimento">Data de Nascimento</label>
+						<input type="date" class="form-control" id="datanascimento">
+						<div id="datanascimento-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="rg">RG</label>
+						<input type="text" class="form-control" id="rg">
+						<div id="rg-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="cpf">CPF</label>
+						<input type="text" class="form-control" id="cpf">
+						<div id="cpf-message" hidden="true" class="text-danger"></div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-6">
+						<label for="cpf">E-mail</label>
+						<input type="email" class="form-control" id="email">
+						<div id="email-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="telefoneresidencial">Telefone Residencial</label>
+						<input type="tel" class="form-control" id="telefoneresidencial">
+						<div id="telefoneresidencial-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="telefonecelular">Telefone Celular</label>
+						<input type="tel" class="form-control" id="telefonecelular">
+						<div id="telefonecelular-message" hidden="true" class="text-danger"></div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-9">
+						<label for="endereco">Endereço</label>
+						<input type="text" class="form-control" id="endereco">
+						<div id="endereco-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="bairro">Bairro</label>
+						<input type="text" class="form-control" id="bairro">
+						<div id="bairro-message" hidden="true" class="text-danger"></div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-3">
+						<label for="municipio">Município</label>
+						<input type="text" class="form-control" id="municipio" value="Salvador">
+						<div id="municipio-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="estado">Estado</label>
+						<input type="text" class="form-control" id="estado" value="Bahia">
+						<div id="estado-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="pais">País</label>
+						<input type="text" class="form-control" id="pais" value="Brasil">
+						<div id="pais-message" hidden="true" class="text-danger"></div>
+					</div>
+					<div class="col-md-3">
+						<label for="cep">CEP</label>
+						<input type="text" class="form-control" id="cep">
+						<div id="cep-message" hidden="true" class="text-danger"></div>
+					</div>					
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<button id="salvar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Salvar</button>
+						<button id="voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Voltar</button>
+					</div>
+				</div>
+			</form>
+			
+			<div id="global-message" hidden="true" class="alert"></div>
+		</div>
+	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/proxy/peregrino.js"></script>
+	<script type="text/javascript" src="js/controller/peregrino-edit.js"></script>
+</body>
+</html>
