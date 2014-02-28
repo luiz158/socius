@@ -18,8 +18,7 @@ PeregrinoProxy.prototype.all = function($success) {
 PeregrinoProxy.prototype.load = function($id, $success, $error) {
     $.ajax({
 		type : "GET",
-		url : this.url,
-		data: {"id" : $id},
+		url : this.url + "/" + $id,
 		contentType : "application/json",
 		success : function(data) {
 		    if ($success) {

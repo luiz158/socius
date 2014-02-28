@@ -66,7 +66,7 @@ function error(request) {
 }
 
 function loadForm(peregrino){
-	$(Object.keys(peregrino[0])).each(function(index, property) {
-		$("#" + property).val(peregrino[0][property]);
+	$(Object.keys(peregrino)).each(function(index, property) {
+		$("#" + property).val(peregrino[property]);
 	});
 }
