@@ -15,6 +15,20 @@ PeregrinoProxy.prototype.all = function($success) {
     });
 };
 
+PeregrinoProxy.prototype.load = function($id, $success, $error) {
+    $.ajax({
+		type : "GET",
+		url : this.url,
+		data: {"id" : $id},
+		contentType : "application/json",
+		success : function(data) {
+		    if ($success) {
+		    	$success(data);
+		    }
+		}
+    });
+};
+
 PeregrinoProxy.prototype.create = function($form, $success, $error) {
     $.ajax({
 		type : "POST",

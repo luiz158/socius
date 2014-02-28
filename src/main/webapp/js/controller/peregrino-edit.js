@@ -1,5 +1,11 @@
 $(function() {
 
+	var id = $.url().param('id');
+	
+	if (id !== undefined){
+		new PeregrinoProxy().load(id, loadForm);
+	}
+	
 	$("#voltar").click(function(){
 		location.href="peregrino-list.html";
 	});
@@ -57,4 +63,10 @@ function error(request) {
     		console.log(request);
     		$("#global-message").html("Erro ao cadastrar peregrino.").removeClass("alert-success").addClass("alert-danger").show();
     }
+}
+
+function loadForm(peregrino){
+	$(Object.keys(peregrino[0])).each(function(index, property) {
+		$("#" + property).val(peregrino[0][property]);
+	});
 }
