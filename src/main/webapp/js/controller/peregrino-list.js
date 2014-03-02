@@ -1,5 +1,7 @@
 $(function() {
 	
+    $('.footable').footable();
+	
 	$("#novo").click(function(){
 		location.href="peregrino-edit.html";
 	});

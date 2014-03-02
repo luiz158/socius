@@ -18,7 +18,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="peregrino")
-@JsonSerialize(include=Inclusion.NON_EMPTY)
 public class Peregrino implements Serializable {
 
 	private static final long serialVersionUID = 1L;
