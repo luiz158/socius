@@ -6,12 +6,14 @@
 	<persistence-unit name="socius-ds" transaction-type="JTA">
 		<jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
 		
+		<class>br.com.socius.entity.Evento</class>		
+		<class>br.com.socius.entity.Pagamento</class>
 		<class>br.com.socius.entity.Peregrino</class>		
 		
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
 		</properties>

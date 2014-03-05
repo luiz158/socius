@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Socius</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/footable.core.css">
+
+</head>
+<body>
+		<div class="container">
+		
+			<img src="img/logo.png" class="center-block">
+		
+			<h2>Lista de Eventos</h2>
+			
+			<p>
+				<button id="novo" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp;Novo</button>
+			</p>	
+			
+			<table id="evento" class="table table-bordered table-condensed footable">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Evento</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+			
+		</div>
+	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lib/footable.js"></script>
+	<script type="text/javascript" src="js/lib/footable.sort.js"></script>
+	<script type="text/javascript" src="js/proxy/proxy.js"></script>
+	<script type="text/javascript" src="js/controller/evento-list.js"></script>
+</body>
+</html>

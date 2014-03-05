@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Socius</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/socius.css">
+
+</head>
+<body>
+		<div class="container">
+		
+			<img src="img/logo.png" class="center-block">
+		
+			<h2>Cadastro de Evento</h2>
+			
+		
+			<form role="form" class="well">
+			<input type="hidden" id="id">
+			
+				<div class="row form-group">
+					<div class="col-md-12">
+						<label for="nome"><span class="required-asterisk">*</span> Nome</label>
+		    		<input type="text" class="form-control" id="nome">
+		    		<div id="nome-message" hidden="true" class="text-danger"></div>
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<button id="salvar" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Salvar</button>
+						<button id="voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Voltar</button>
+					</div>
+				</div>
+			</form>
+			
+			<div id="global-message" hidden="true" class="alert"></div>
+		</div>
+	<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/lib/purl.js"></script>
+	<script type="text/javascript" src="js/proxy/proxy.js"></script>
+	<script type="text/javascript" src="js/controller/evento-edit.js"></script>
+	
+</body>
+</html>
