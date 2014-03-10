@@ -4,11 +4,11 @@
 
 	<!-- If you are using JBoss AS7 with JTA transaction then use this persistence-unit -->
 	<persistence-unit name="socius-ds" transaction-type="JTA">
-		<jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>
-		
+		<jta-data-source>java:jboss/datasources/MysqlDS</jta-data-source>		
 		<class>br.com.socius.entity.Evento</class>		
 		<class>br.com.socius.entity.Pagamento</class>
 		<class>br.com.socius.entity.Peregrino</class>		
+		<class>br.com.socius.entity.Usuario</class>
 		
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
