@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Socius</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/socius.css">
+	</head>
+	<body>
+	
+		<header class="collapsed">
+			<div class="container">
+				<nav>
+		    	<ul>
+		        <li><a href="//www.getsentry.com/pricing/">Plans &amp; Pricing</a></li>
+		        <li><a href="//www.getsentry.com/guide/">Docs</a></li>
+		        <li><a href="http://blog.getsentry.com">Blog</a></li>
+						<li><a href="//www.getsentry.com/login/" class="highlight">Sign in</a></li>
+					</ul>
+				</nav>
+				<h1><a href="/" id="logo"><img src="//www.getsentry.com/_static/getsentry/images/sentry-logo.svg"></a></h1>
+			</div>
+		</header>
+		
+		<div class="container">
+			<h1>Crie sua conta</h1>
+			<div class="row">
+			  <div class="col-md-6">
+			  	<label for="usuario.nome">Nome <span class="required-asterisk">*</span></label>
+			    <input type="text" id="usuario.nome" class="form-control">
+			  </div>
+ 			  <div class="col-md-6">
+			  	<label for="usuario.email">E-mail <span class="required-asterisk">*</span></label>
+			    <input type="text" id="usuario.email" class="form-control">
+			  </div>
+			</div>
+				
+			<p>
+				<fieldset>
+				<legend>Dados da Entidade</legend>
+					<div class="row">
+					  <div class="col-md-5">
+					  	<label for="entidade.nome">Nome <span class="required-asterisk">*</span></label>
+					    <input type="text" id="entidade.nome" class="form-control">
+					  </div>
+		 			  <div class="col-md-2">
+					  	<label for="entidade.sigla">Sigla</label>
+					    <input type="text" id="entidade.sigla" class="form-control">
+					  </div>
+					  <div class="col-md-2">
+					  	<label for="entidade.nome">CNPJ</label>
+					    <input type="text" id="entidade.cnpj" maxlength="14" class="form-control">
+					  </div>
+	 				  <div class="col-md-3">
+					  	<label for="entidade.url">URL</label>
+					    <input type="url" id="entidade.url" class="form-control">
+					  </div>
+					</div>
+				</fieldset>
+			</p>
+		</div>
+		
+		<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/lib/spin.js"></script>
+	</body>
+</html>

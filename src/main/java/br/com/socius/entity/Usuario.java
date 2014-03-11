@@ -1,7 +1,6 @@
 package br.com.socius.entity;
 
-import java.io.Serializable;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,11 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.gov.frameworkdemoiselle.security.User;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable {
+public class Usuario implements User {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,22 +23,26 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotEmpty
 	private String nome;
 
 	@Email
+	@NotEmpty
+	@Column(unique = true)
 	private String email;
-	
+
+	@NotEmpty
 	private String senha;
-	
-	@ManyToOne
+
+	@ManyToOne(optional=true)
 	private Entidade entidade;
-	
-	@ManyToOne
+
+	@ManyToOne(optional=true)
 	private Usuario titular;
 
-	public Long getId() {
-		return id;
+	@Override
+	public String getId() {
+		return id == null ? null : id.toString();
 	}
 
 	public void setId(Long id) {
@@ -75,5 +80,25 @@ public class Usuario implements Serializable {
 	public void setEntidade(Entidade entidade) {
 		this.entidade = entidade;
 	}
-	
+
+	public Usuario getTitular() {
+		return titular;
+	}
+
+	public void setTitular(Usuario titular) {
+		this.titular = titular;
+	}
+
+	@Override
+	public Object getAttribute(Object key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setAttribute(Object key, Object value) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
