@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -34,11 +37,10 @@ public class Usuario implements User {
 	@NotEmpty
 	private String senha;
 
-	@ManyToOne(optional=true)
+	@OneToOne
+	@JoinColumn(referencedColumnName = "id", name = "id_entidade")
+	@NotNull
 	private Entidade entidade;
-
-	@ManyToOne(optional=true)
-	private Usuario titular;
 
 	@Override
 	public String getId() {
@@ -79,14 +81,6 @@ public class Usuario implements User {
 
 	public void setEntidade(Entidade entidade) {
 		this.entidade = entidade;
-	}
-
-	public Usuario getTitular() {
-		return titular;
-	}
-
-	public void setTitular(Usuario titular) {
-		this.titular = titular;
 	}
 
 	@Override

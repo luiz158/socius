@@ -1,15 +1,19 @@
 package br.com.socius.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 import org.hibernate.validator.constraints.br.CNPJ;
 
@@ -23,19 +27,21 @@ public class Entidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank
+	@NotEmpty
 	private String nome;
 
-	@CNPJ
+	@Column(unique = true)
 	private String cnpj;
 
-	@URL
 	private String site;
 
 	private String sigla;
 
 	@OneToOne
 	private Usuario titular;
+
+	@OneToMany(mappedBy = "entidade")
+	private List<Usuario> usuarios;
 
 	public Long getId() {
 		return id;
@@ -83,6 +89,14 @@ public class Entidade implements Serializable {
 
 	public void setTitular(Usuario titular) {
 		this.titular = titular;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }
