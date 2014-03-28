@@ -1,4 +1,4 @@
-package br.com.socius.service;
+package br.com.socius.rest;
 
 import static javax.ws.rs.core.Response.Status.CREATED;
 
@@ -25,7 +25,7 @@ import br.com.socius.security.Passwords;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @ValidateRequest
-@Path("api/register")
+@Path("register")
 public class RegisterService {
 
 	@Inject

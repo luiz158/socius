@@ -1,4 +1,6 @@
-package br.com.socius.service;
+package br.com.socius.rest;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.List;
 
@@ -13,38 +15,44 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.business.PaymentBC;
-import br.com.socius.entity.Payment;
+import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-@Path("/api/payment")
-public class PaymentService {
+import br.com.socius.business.EventBC;
+import br.com.socius.entity.Event;
+import br.com.socius.persistence.EventDAO;
+
+@ValidateRequest
+@Path("event")
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+public class EventService {
 
 	@Inject
-	PaymentBC bc;
+	EventBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Payment> findAll() throws Exception {
+	public List<Event> findAll() throws Exception {
 		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Payment findById(@PathParam("id") Long id) throws Exception {
+	public Event findById(@PathParam("id") Long id) throws Exception {
 		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Payment payment) throws Exception {
-		bc.insert(payment);
+	public void insert(Event event) throws Exception {
+		bc.insert(event);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Payment payment) throws Exception {
-		bc.update(payment);
+	public void update(Event event) throws Exception {
+		bc.update(event);
 	}
 
 	@DELETE

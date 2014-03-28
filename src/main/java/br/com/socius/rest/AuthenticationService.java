@@ -1,4 +1,4 @@
-package br.com.socius.service;
+package br.com.socius.rest;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -17,7 +17,7 @@ import br.gov.frameworkdemoiselle.security.SecurityContext;
 import br.gov.frameworkdemoiselle.util.Beans;
 
 @ValidateRequest
-@Path("/api/auth")
+@Path("auth")
 @Produces(APPLICATION_JSON)
 public class AuthenticationService {
 

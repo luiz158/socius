@@ -1,4 +1,6 @@
-package br.com.socius.service;
+package br.com.socius.rest;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.List;
 
@@ -13,38 +15,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.business.MemberBC;
-import br.com.socius.entity.Member;
+import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-@Path("/api/member")
-public class MemberService {
+import br.com.socius.business.PaymentBC;
+import br.com.socius.entity.Payment;
+
+@ValidateRequest
+@Path("payment")
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+public class PaymentService {
 
 	@Inject
-	MemberBC bc;
+	PaymentBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Member> findAll() throws Exception {
+	public List<Payment> findAll() throws Exception {
 		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Member findById(@PathParam("id") Long id) throws Exception {
+	public Payment findById(@PathParam("id") Long id) throws Exception {
 		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Member peregrino) throws Exception {
-		bc.insert(peregrino);
+	public void insert(Payment payment) throws Exception {
+		bc.insert(payment);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Member peregrino) throws Exception {
-		bc.update(peregrino);
+	public void update(Payment payment) throws Exception {
+		bc.update(payment);
 	}
 
 	@DELETE

@@ -1,4 +1,6 @@
-package br.com.socius.service;
+package br.com.socius.rest;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.List;
 
@@ -13,11 +15,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.jboss.resteasy.spi.validation.ValidateRequest;
+
 import br.com.socius.entity.User;
 import br.com.socius.persistence.UserDAO;
 import br.com.socius.security.Passwords;
 
-@Path("/api/user")
+@ValidateRequest
+@Path("user")
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
 public class UserService {
 
 	@Inject

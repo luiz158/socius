@@ -1,4 +1,6 @@
-package br.com.socius.service;
+package br.com.socius.rest;
+
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import java.util.List;
 
@@ -13,39 +15,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.business.EventBC;
-import br.com.socius.entity.Event;
-import br.com.socius.persistence.EventDAO;
+import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-@Path("/api/event")
-public class EventService {
+import br.com.socius.business.MemberBC;
+import br.com.socius.entity.Member;
+
+@ValidateRequest
+@Path("member")
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
+public class MemberService {
 
 	@Inject
-	EventBC bc;
+	MemberBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Event> findAll() throws Exception {
+	public List<Member> findAll() throws Exception {
 		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Event findById(@PathParam("id") Long id) throws Exception {
+	public Member findById(@PathParam("id") Long id) throws Exception {
 		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Event event) throws Exception {
-		bc.insert(event);
+	public void insert(Member peregrino) throws Exception {
+		bc.insert(peregrino);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Event event) throws Exception {
-		bc.update(event);
+	public void update(Member peregrino) throws Exception {
+		bc.update(peregrino);
 	}
 
 	@DELETE
