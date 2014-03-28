@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -14,11 +13,9 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import br.gov.frameworkdemoiselle.security.User;
-
 @Entity
-@Table(name = "usuario")
-public class Usuario implements User {
+@Table(name = "user")
+public class User implements br.gov.frameworkdemoiselle.security.User {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +24,7 @@ public class Usuario implements User {
 	private Long id;
 
 	@NotEmpty
-	private String nome;
+	private String name;
 
 	@Email
 	@NotEmpty
@@ -35,14 +32,13 @@ public class Usuario implements User {
 	private String email;
 
 	@NotEmpty
-	private String senha;
+	private String password;
 
 	@OneToOne
-	@JoinColumn(referencedColumnName = "id", name = "id_entidade")
+	@JoinColumn(referencedColumnName = "id", name = "id_company")
 	@NotNull
-	private Entidade entidade;
+	private Company company;
 
-	@Override
 	public String getId() {
 		return id == null ? null : id.toString();
 	}
@@ -51,12 +47,12 @@ public class Usuario implements User {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -67,20 +63,20 @@ public class Usuario implements User {
 		this.email = email;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public Entidade getEntidade() {
-		return entidade;
+	public Company getCompany() {
+		return company;
 	}
 
-	public void setEntidade(Entidade entidade) {
-		this.entidade = entidade;
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
 	@Override

@@ -3,11 +3,8 @@ package br.com.socius.service;
 import static javax.ws.rs.core.Response.Status.CREATED;
 
 import javax.inject.Inject;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,16 +12,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.URL;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.jboss.resteasy.spi.validation.ValidateRequest;
 
-import br.com.socius.entity.Entidade;
-import br.com.socius.entity.Usuario;
-import br.com.socius.persistence.EntidadeDAO;
-import br.com.socius.persistence.UsuarioDAO;
+import br.com.socius.business.CompanyBC;
+import br.com.socius.business.UserBC;
+import br.com.socius.entity.Company;
+import br.com.socius.entity.User;
 import br.com.socius.security.Passwords;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
@@ -33,111 +29,112 @@ import br.gov.frameworkdemoiselle.transaction.Transactional;
 public class RegisterService {
 
 	@Inject
-	UsuarioDAO usuarioDAO;
+	UserBC userBC;
 
 	@Inject
-	EntidadeDAO entidadeDAO;
+	CompanyBC entidadeBC;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Transactional
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response insert(@NotNull @Valid RegisterForm registerForm) throws Exception {
-		Entidade entidade = new Entidade();
-		entidade.setNome(registerForm.getEntidadeNome());
-		entidade.setSigla(registerForm.getEntidadeSigla());
-		entidade.setCnpj(registerForm.getEntidadeCnpj());
-		entidade.setSite(registerForm.getEntidadeSite());
-		entidadeDAO.insert(entidade);
-		
-		Usuario usuario = new Usuario();
-		usuario.setNome(registerForm.getUsuarioNome());
-		usuario.setEmail(registerForm.getUsuarioEmail());
-		usuario.setSenha(Passwords.hash(registerForm.getUsuarioSenha()));
-		usuario.setEntidade(entidade);
-		usuarioDAO.insert(usuario);
-		
-		entidade.setTitular(usuario);
-		return Response.status(CREATED).build();
+	public Response insert(@NotNull @Valid RegisterForm registerForm)
+			throws Exception {
+		Company company = new Company();
+		company.setName(registerForm.getCompanyName());
+		company.setAcronym(registerForm.getCompanyAcronym());
+		company.setCnpj(registerForm.getCompanyCnpj());
+		company.setUrl(registerForm.getCompanyUrl());
+		entidadeBC.insert(company);
 
+		User user = new User();
+		user.setName(registerForm.getUserName());
+		user.setEmail(registerForm.getUserEmail());
+		user.setPassword(Passwords.hash(registerForm.getUserPassword()));
+		user.setCompany(company);
+		userBC.insert(user);
+
+		company.setUser(user);
+
+		return Response.status(CREATED).build();
 	}
 
 	public static class RegisterForm {
 
 		@NotEmpty
-		private String usuarioNome;
+		private String userName;
 
 		@NotEmpty
-		private String usuarioEmail;
+		private String userEmail;
 
 		@NotEmpty
-		private String usuarioSenha;
+		private String userPassword;
 
 		@NotEmpty
-		private String entidadeNome;
+		private String companyName;
 
-		private String entidadeSigla;
+		private String companyAcronym;
 
 		@CNPJ
-		private String entidadeCnpj;
+		private String companyCnpj;
 
 		@URL
-		private String entidadeSite;
+		private String companyUrl;
 
-		public String getUsuarioNome() {
-			return usuarioNome;
+		public String getUserName() {
+			return userName;
 		}
 
-		public void setUsuarioNome(String usuarioNome) {
-			this.usuarioNome = usuarioNome;
+		public void setUserName(String userName) {
+			this.userName = userName;
 		}
 
-		public String getUsuarioEmail() {
-			return usuarioEmail;
+		public String getUserEmail() {
+			return userEmail;
 		}
 
-		public void setUsuarioEmail(String usuarioEmail) {
-			this.usuarioEmail = usuarioEmail;
+		public void setUserEmail(String userEmail) {
+			this.userEmail = userEmail;
 		}
 
-		public String getUsuarioSenha() {
-			return usuarioSenha;
+		public String getUserPassword() {
+			return userPassword;
 		}
 
-		public void setUsuarioSenha(String usuarioSenha) {
-			this.usuarioSenha = usuarioSenha;
+		public void setUserPassword(String userPassword) {
+			this.userPassword = userPassword;
 		}
 
-		public String getEntidadeNome() {
-			return entidadeNome;
+		public String getCompanyName() {
+			return companyName;
 		}
 
-		public void setEntidadeNome(String entidadeNome) {
-			this.entidadeNome = entidadeNome;
+		public void setCompanyName(String companyName) {
+			this.companyName = companyName;
 		}
 
-		public String getEntidadeSigla() {
-			return entidadeSigla;
+		public String getCompanyAcronym() {
+			return companyAcronym;
 		}
 
-		public void setEntidadeSigla(String entidadeSigla) {
-			this.entidadeSigla = entidadeSigla;
+		public void setCompanyAcronym(String companyAcronym) {
+			this.companyAcronym = companyAcronym;
 		}
 
-		public String getEntidadeCnpj() {
-			return entidadeCnpj;
+		public String getCompanyCnpj() {
+			return companyCnpj;
 		}
 
-		public void setEntidadeCnpj(String entidadeCnpj) {
-			this.entidadeCnpj = entidadeCnpj;
+		public void setCompanyCnpj(String companyCnpj) {
+			this.companyCnpj = companyCnpj;
 		}
 
-		public String getEntidadeSite() {
-			return entidadeSite;
+		public String getCompanyUrl() {
+			return companyUrl;
 		}
 
-		public void setEntidadeSite(String entidadeSite) {
-			this.entidadeSite = entidadeSite;
+		public void setCompanyUrl(String companyUrl) {
+			this.companyUrl = companyUrl;
 		}
 
 	}

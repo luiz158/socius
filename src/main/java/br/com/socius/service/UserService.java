@@ -13,38 +13,40 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.entity.Peregrino;
-import br.com.socius.persistence.PeregrinoDAO;
+import br.com.socius.entity.User;
+import br.com.socius.persistence.UserDAO;
+import br.com.socius.security.Passwords;
 
-@Path("/api/peregrino")
-public class PeregrinoService {
+@Path("/api/user")
+public class UserService {
 
 	@Inject
-	PeregrinoDAO dao;
+	UserDAO dao;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Peregrino> findAll() throws Exception {
+	public List<User> findAll() throws Exception {
 		return dao.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Peregrino findById(@PathParam("id") Long id) throws Exception {
+	public User findById(@PathParam("id") Long id) throws Exception {
 		return dao.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Peregrino peregrino) throws Exception {
-		dao.insert(peregrino);
+	public void insert(User user) throws Exception {
+		user.setPassword(Passwords.hash(user.getPassword()));
+		dao.insert(user);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Peregrino peregrino) throws Exception {
-		dao.update(peregrino);
+	public void update(User user) throws Exception {
+		dao.update(user);
 	}
 
 	@DELETE

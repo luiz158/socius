@@ -13,45 +13,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.entity.Usuario;
-import br.com.socius.persistence.UsuarioDAO;
-import br.com.socius.security.Passwords;
+import br.com.socius.business.PaymentBC;
+import br.com.socius.entity.Payment;
 
-@Path("/api/usuario")
-public class UsuarioService {
+@Path("/api/payment")
+public class PaymentService {
 
 	@Inject
-	UsuarioDAO dao;
+	PaymentBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Usuario> findAll() throws Exception {
-		return dao.findAll();
+	public List<Payment> findAll() throws Exception {
+		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario findById(@PathParam("id") Long id) throws Exception {
-		return dao.load(id);
+	public Payment findById(@PathParam("id") Long id) throws Exception {
+		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Usuario usuario) throws Exception {
-		usuario.setSenha(Passwords.hash(usuario.getSenha()));
-		dao.insert(usuario);
+	public void insert(Payment payment) throws Exception {
+		bc.insert(payment);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Usuario usuario) throws Exception {
-		dao.update(usuario);
+	public void update(Payment payment) throws Exception {
+		bc.update(payment);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public void delete(@PathParam("id") Long id) throws Exception {
-		dao.delete(id);
+		bc.delete(id);
 	}
 }

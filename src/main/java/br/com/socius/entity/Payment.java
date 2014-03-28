@@ -2,7 +2,6 @@ package br.com.socius.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "pagamento")
-public class Pagamento implements Serializable {
+@Table(name = "payment")
+public class Payment implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,13 +23,13 @@ public class Pagamento implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	private Peregrino peregrino;
+	private Member member;
 
 	@ManyToOne
-	private Evento evento;
+	private Event event;
 
 	@NotBlank
-	private BigDecimal valor;
+	private BigDecimal value;
 
 	public Long getId() {
 		return id;
@@ -40,28 +39,28 @@ public class Pagamento implements Serializable {
 		this.id = id;
 	}
 
-	public Peregrino getPeregrino() {
-		return peregrino;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setPeregrino(Peregrino peregrino) {
-		this.peregrino = peregrino;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public Event getEvent() {
+		return event;
 	}
 
-	public void setEvento(Evento evento) {
-		this.evento = evento;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 
-	public BigDecimal getValor() {
-		return valor;
+	public BigDecimal getValue() {
+		return value;
 	}
 
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
+	public void setValue(BigDecimal value) {
+		this.value = value;
 	}
 
 }

@@ -3,14 +3,14 @@ package br.com.socius.entity;
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonValue;
 
-public enum Sangue {
+public enum BloodType {
 
 	A_POSITIVE("A+"), A_NEGATIVE("A-"), B_POSITIVE("A+"), B_NEGATIVE("B-"), 
 	AB_POSITIVE("AB+"), AB_NEGATIVE("AB-"), O_POSITIVE("O+"), O_NEGATIVE("O-");
 
 	private final String value;
 
-	Sangue(String value) {
+	BloodType(String value) {
 		this.value = value;
 	}
 
@@ -20,10 +20,10 @@ public enum Sangue {
 	}
 
 	@JsonCreator
-	public static Sangue fromValue(String value) {
-		Sangue result = null;
+	public static BloodType fromValue(String value) {
+		BloodType result = null;
 
-		for (Sangue sexo : values()) {
+		for (BloodType sexo : values()) {
 			if (sexo.toString().equalsIgnoreCase(value)) {
 				result = sexo;
 				break;

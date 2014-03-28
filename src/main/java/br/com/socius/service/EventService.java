@@ -13,43 +13,44 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.entity.Evento;
-import br.com.socius.persistence.EventoDAO;
+import br.com.socius.business.EventBC;
+import br.com.socius.entity.Event;
+import br.com.socius.persistence.EventDAO;
 
-@Path("/api/evento")
-public class EventoService {
+@Path("/api/event")
+public class EventService {
 
 	@Inject
-	EventoDAO dao;
+	EventBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Evento> findAll() throws Exception {
-		return dao.findAll();
+	public List<Event> findAll() throws Exception {
+		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Evento findById(@PathParam("id") Long id) throws Exception {
-		return dao.load(id);
+	public Event findById(@PathParam("id") Long id) throws Exception {
+		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Evento evento) throws Exception {
-		dao.insert(evento);
+	public void insert(Event event) throws Exception {
+		bc.insert(event);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Evento evento) throws Exception {
-		dao.update(evento);
+	public void update(Event event) throws Exception {
+		bc.update(event);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public void delete(@PathParam("id") Long id) throws Exception {
-		dao.delete(id);
+		bc.delete(id);
 	}
 }

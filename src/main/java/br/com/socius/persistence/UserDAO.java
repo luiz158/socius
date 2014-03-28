@@ -3,22 +3,22 @@ package br.com.socius.persistence;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import br.com.socius.entity.Usuario;
+import br.com.socius.entity.User;
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.frameworkdemoiselle.template.JPACrud;
 
 @PersistenceController
-public class UsuarioDAO extends JPACrud<Usuario, Long> {
+public class UserDAO extends JPACrud<User, Long> {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public Usuario loadByEmail(String email) {
+	public User loadByEmail(String email) {
 		String jpql = "from " + this.getBeanClass().getName() + " where email = :email";
 
-		TypedQuery<Usuario> query = getEntityManager().createQuery(jpql, Usuario.class);
+		TypedQuery<User> query = getEntityManager().createQuery(jpql, User.class);
 		query.setParameter("email", email);
 
-		Usuario result;
+		User result;
 
 		try {
 			result = query.getSingleResult();

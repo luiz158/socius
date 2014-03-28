@@ -11,8 +11,8 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "evento")
-public class Evento implements Serializable {
+@Table(name = "event")
+public class Event implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +21,7 @@ public class Evento implements Serializable {
 	private Long id;
 
 	@NotBlank
-	private String nome;
+	private String name;
 
 	public Long getId() {
 		return id;
@@ -31,12 +31,12 @@ public class Evento implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

@@ -13,43 +13,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import br.com.socius.entity.Pagamento;
-import br.com.socius.persistence.PagamentoDAO;
+import br.com.socius.business.MemberBC;
+import br.com.socius.entity.Member;
 
-@Path("/api/pagamento")
-public class PagamentoService {
+@Path("/api/member")
+public class MemberService {
 
 	@Inject
-	PagamentoDAO dao;
+	MemberBC bc;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Pagamento> findAll() throws Exception {
-		return dao.findAll();
+	public List<Member> findAll() throws Exception {
+		return bc.findAll();
 	}
 
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Pagamento findById(@PathParam("id") Long id) throws Exception {
-		return dao.load(id);
+	public Member findById(@PathParam("id") Long id) throws Exception {
+		return bc.load(id);
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void insert(Pagamento pagamento) throws Exception {
-		dao.insert(pagamento);
+	public void insert(Member peregrino) throws Exception {
+		bc.insert(peregrino);
 	}
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void update(Pagamento pagamento) throws Exception {
-		dao.update(pagamento);
+	public void update(Member peregrino) throws Exception {
+		bc.update(peregrino);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public void delete(@PathParam("id") Long id) throws Exception {
-		dao.delete(id);
+		bc.delete(id);
 	}
 }
