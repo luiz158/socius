@@ -1,5 +1,9 @@
 $(function() {
 	
+	$.get('menu.html').success(function(data) { 
+		$('header').html(data); 
+	});
+	
 	var proxy = new Proxy("api/register"); 
 	
 	$("#registrar").click(

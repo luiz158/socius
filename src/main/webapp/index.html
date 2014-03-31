@@ -1,50 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
 		<title>Socius</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/socius.css">
 	</head>
 	<body>
+		<header class="collapsed"></header>
+		
 		<div class="container">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<form id="form-login" class="form-horizontal" role="form">
-							<p>
-								<label for="username">E-mail</label> 
-								<input id="username" type="email" class="form-control input-lg" />
-								<div id="username-message" class="label label-danger" hidden="true"></div>
-							</p>
-							<p>
-								<label for="password">Senha</label> 
-								<input id="password" type="password" class="form-control input-lg" />
-								<div id="password-message" class="label label-danger" hidden="true"></div>
-							</p>
-							<p>
-								<div id="global-message" class="alert alert-danger" hidden="true"></div>
-								<button id="login" class="btn btn-success " type="button">Entrar</button>
-							</p>
-						</form>
-					</div>
-					<div class="panel-footer text-center">
-						<p>
-							<a href="register.html" class="signup-link">Precisa de uma conta? <strong>Registre-se aqui</strong></a> <br /> 
-							<a href="reset" class="password-link"><small>Esqueceu	sua senha?</small></a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="modal" tabindex="-1" role="dialog">
-			<div style="height: 200px">
-				<span id="spin" style="position: absolute; display: block; top: 50%; left: 50%;"></span>
-			</div>
-		</div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <img class="img-responsive img-rounded" src="http://placehold.it/900x350">
+                <!-- take out img-rounded if you don't want the rounded corners on the image -->
+            </div>
+            <div class="col-lg-4">
+                <h1>Business Name or Tagline</h1>
+                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
+                <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="well text-center">
+                    This is a well that is a great spot for a business tagline or phone number for easy access!
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <h2>Heading 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin auctor quam ac tempor. Cras a ante sed libero mollis sodales. Praesent fringilla, neque ut ultrices faucibus, dolor eros ultrices neque, nec bibendum arcu ipsum eget justo.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <div class="col-lg-4">
+                <h2>Heading 2</h2>
+                <p>Phasellus vestibulum sagittis purus laoreet varius. Pellentesque malesuada malesuada mattis. Aliquam sed porta nisi, eget suscipit dolor. Nam ipsum sapien, rhoncus eu leo eu, ultricies pellentesque tellus.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+            <div class="col-lg-4">
+                <h2>Heading 3</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sollicitudin auctor quam ac tempor. Cras a ante sed libero mollis sodales. Praesent fringilla, neque ut ultrices faucibus, dolor eros ultrices neque, nec bibendum arcu ipsum eget justo.</p>
+                <a class="btn btn-default" href="#">More Info</a>
+            </div>
+        </div>
+
+        <footer>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Company 2013</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    
 		<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
 		<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/lib/spin.js"></script>
+		<script type="text/javascript" src="js/controller/index.js"></script>
 	</body>
 </html>

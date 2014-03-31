@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Socius</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/socius.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form id="form-login" class="form-horizontal" role="form">
+							<p>
+								<label for="username">E-mail</label> 
+								<input id="username" type="email" class="form-control input-lg" />
+								<div id="username-message" class="label label-danger" hidden="true"></div>
+							</p>
+							<p>
+								<label for="password">Senha</label> 
+								<input id="password" type="password" class="form-control input-lg" />
+								<div id="password-message" class="label label-danger" hidden="true"></div>
+							</p>
+							<p>
+								<div id="global-message" class="alert alert-danger" hidden="true"></div>
+								<button id="login" class="btn btn-success " type="button">Entrar</button>
+							</p>
+						</form>
+					</div>
+					<div class="panel-footer text-center">
+						<p>
+							<a href="register.html" class="signup-link">Precisa de uma conta? <strong>Registre-se aqui</strong></a> <br /> 
+							<a href="reset" class="password-link"><small>Esqueceu	sua senha?</small></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+			<div style="height: 200px">
+				<span id="spin" style="position: absolute; display: block; top: 50%; left: 50%;"></span>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/lib/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/lib/spin.js"></script>
+	</body>
 </html>
